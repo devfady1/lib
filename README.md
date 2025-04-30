@@ -62,8 +62,9 @@ project:
       5. استمتع بتجربة مكتبة فخمة جدًا 😎
 
   contributors:
+
     - name: "فادي أشرف"
-      role: "Backend Developer 👨‍💻"
+      role: "Full Stack Developer 👨‍💻"
       bio: "مسؤول عن ربط الـ Entity Framework، تصميم الـ Controllers، ورفع الصور"
 
     - name: "مريم ربيعي"
