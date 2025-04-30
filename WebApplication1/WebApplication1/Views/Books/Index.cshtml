@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebApplication1.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<header style="background-color: #343a40; padding: 15px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="color: white; margin: 0;">📚 Book Store</h2>
+        <nav>
+            <a href="/Books" style="color: #ffc107; margin-right: 20px; font-weight: bold; text-decoration: none;">🏠 الكتب</a>
+            <a href="/Books/Create" style="color: #ffc107; font-weight: bold; text-decoration: none;">➕ إضافة كتاب</a>
+        </nav>
+    </div>
+</header>
+
+
+<div class="container my-4">
+    <h1 class="text-center fw-bold mb-4">Welcome To Our Book Store</h1>
+
+    <div class="search-container mb-3">
+        <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Search for a book..." onkeyup="searchBooks()">
+    </div>
+
+    <div id="booksContainer" class="row justify-content-center">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4 mb-4 book-item">
+                <div class="card book-card">
+                    <img src="@book.ImagePath" class="card-img-top" alt="@book.Name" style="height: 650px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">@book.Name</h5>
+                        <p class="card-text text-muted">Author: @book.Author</p>
+                        <a href="/Books/Details/@book.Id" class="btn btn-details">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function searchBooks() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const books = document.querySelectorAll('.book-item');
+            books.forEach(book => {
+                const title = book.querySelector('.card-title').innerText.toLowerCase();
+                book.style.display = title.includes(query) ? 'block' : 'none';
+            });
+        }
+    </script>
+}
+
+<style>
+    body {
+        background: linear-gradient(to bottom, #f6e58d, #ffbe76);
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+
+    .book-card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .btn-details {
+        background-color: #e55039;
+        color: white;
+        font-weight: bold;
+    }
+
+    .btn-details:hover {
+        background-color: #fa983a;
+    }
+</style>

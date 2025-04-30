@@ -1,0 +1,38 @@
+﻿@model WebApplication1.Models.Book
+
+@{
+    ViewData["Title"] = "Add Book";
+}
+
+<header style="background-color: #343a40; color: white; padding: 20px; text-align: center;">
+    <a href="/Books" style="color: #ffc107; text-decoration: none; font-size: 20px; font-weight: bold;">🏠 الرجوع إلى الصفحة الرئيسية</a>
+</header>
+
+<div class="container" style="padding: 40px 20px; max-width: 600px; margin: auto;">
+    <h2 style="color: #212529; text-align: center; margin-bottom: 30px;">📚 إضافة كتاب جديد</h2>
+
+    <form asp-action="Create" enctype="multipart/form-data" method="post" style="background-color: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <div class="form-group mb-3">
+            <label for="Name" class="form-label">📖 اسم الكتاب:</label>
+            <input asp-for="Name" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Author" class="form-label">✍️ المؤلف:</label>
+            <input asp-for="Author" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Price" class="form-label">💰 السعر:</label>
+            <input asp-for="Price" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="ImagePath" class="form-label">🖼️ رابط صورة الكتاب:</label>
+            <input type="file" name="ImageFile" class="form-control" accept="image/*" required />
+
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">➕ إضافة الكتاب</button>
+    </form>
+</div>

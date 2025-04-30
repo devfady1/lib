@@ -1,0 +1,30 @@
+﻿@model WebApplication1.Models.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 book-container text-center">
+            <img class="img-fluid book-img mb-4" src="@Model.ImagePath" alt="Book Image" />
+            <h2>@Model.Name</h2>
+            <p class="fs-5 mb-1">Author: @Model.Author</p>
+            <p class="fs-4 fw-bold text-danger">Price: @Model.Price</p>
+
+            <div class="mt-4">
+                <a href="/Books" class="back-btn d-block mb-3">← Back to Home</a>
+                <button class="btn btn-custom px-4 py-2" onclick="buyBook()">Buy This Book</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function buyBook() {
+            alert("You are buying @Model.Name for @Model.Price");
+        }
+    </script>
+}
+
